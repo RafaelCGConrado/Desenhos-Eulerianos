@@ -49,6 +49,10 @@ bool add_edge(graph *g, int origin, int destiny){
     }
 
     g -> edges[origin][destiny] = 1;
+
+    //ficar atendo com esta parte aqui:
+    g->edges[destiny][origin] = 1;
+
     return true;
 
 }
@@ -58,14 +62,19 @@ bool add_edge(graph *g, int origin, int destiny){
 
 
 void destroy_graph(graph *g){
+    //Se o grafo já está "vazio", nada precisa
+    //ser feito
     if(g == NULL) return;
 
+    //Vamos liberar cada linha da matriz
     for(int i = 0; i < g -> n_nodes; i++){
         if(g -> edges[i] != NULL){
             free(g -> edges[i]);
         }
 
-        free(g -> edges);
+        //Finalizamos liberando o próprio grafo
+        free(g);
+        
     }
 
 
