@@ -18,3 +18,8 @@ void destroy_graph(graph *g);
 //principalmente para testes
 void print_graph(graph *g);
 
+//Será utilizado para ler o número de vértices, arestas
+//e para definir a matriz de adjacência
+void read_graph_info(graph *g, FILE *file);
+
+void teste(graph *g, int n);

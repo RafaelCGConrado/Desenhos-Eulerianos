@@ -43,6 +43,7 @@ graph *graph_create(int n_nodes, int n_edges){
 }
 
 bool add_edge(graph *g, int origin, int destiny){
+    
     if(g -> edges[origin][destiny] != 0){
         printf("Essa aresta já existe.\n");
         return false;
@@ -96,3 +97,13 @@ void print_graph(graph *g){
 
 }
 
+void teste(graph *g, int n){
+
+    int orig, dest;
+    for(int i = 0; i < n; i++){
+        printf("Insira os vértices: \n");
+        scanf("%d %d", &orig, &dest);
+        add_edge(g, orig, dest);
+
+    }
+}
