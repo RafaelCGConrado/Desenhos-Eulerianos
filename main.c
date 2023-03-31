@@ -2,7 +2,18 @@
 
 int main(){
 
-    graph *g = graph_create(5, 6);
+    //Parte da leitura do arquivo
+    // char *nome_arquivo[20];
+    // scanf("%s", nome_arquivo);
+    // fopen(nome_arquivo, "r");
+    
+    
+    
+    
+    
+    
+    
+    graph *g = graph_create(4, 6);
     // add_edge(g, 0, 1);
     // add_edge(g, 0, 2);
     // add_edge(g, 1, 2);
@@ -11,7 +22,8 @@ int main(){
     // destroy_graph(g);
     teste(g, 6);
     print_graph(g);
-
+    if(even_nodes(g) == false) printf("Nao é euleriano\n");
+    else printf("é euleriano\n");
     //A MODELAGEM DO GRAFO ESTÁ COMPLETA
     //e o resto do problema???
 

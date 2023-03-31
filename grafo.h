@@ -22,4 +22,9 @@ void print_graph(graph *g);
 //e para definir a matriz de adjacência
 void read_graph_info(graph *g, FILE *file);
 
+//Verifica se todos os vértices do grafo tem
+//grau par. Caso não seja, já sabemos que não é
+//um grafo euleriano.
+bool even_nodes(graph *g);
+
 void teste(graph *g, int n);

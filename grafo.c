@@ -97,6 +97,20 @@ void print_graph(graph *g){
 
 }
 
+bool even_nodes(graph *g){
+
+    for(int i = 0; i < g -> n_nodes; i++){
+        int sum_nnodes = 0;
+        for(int j = 0; j < g -> n_nodes; j++){
+            if(g -> edges[i][j] == 1) sum_nnodes++;
+        }
+        if((sum_nnodes % 2) != 0) return false;
+    }
+
+    return true;
+
+}
+
 void teste(graph *g, int n){
 
     int orig, dest;
