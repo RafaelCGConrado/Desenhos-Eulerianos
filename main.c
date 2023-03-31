@@ -13,14 +13,14 @@ int main(){
     
     
     
-    graph *g = graph_create(4, 6);
+    graph *g = graph_create(6, 8);
     // add_edge(g, 0, 1);
     // add_edge(g, 0, 2);
     // add_edge(g, 1, 2);
     
     // print_graph(g);
     // destroy_graph(g);
-    teste(g, 6);
+    teste(g, 8);
     print_graph(g);
     if(even_nodes(g) == false) printf("Nao é euleriano\n");
     else printf("é euleriano\n");

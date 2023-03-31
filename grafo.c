@@ -111,6 +111,31 @@ bool even_nodes(graph *g){
 
 }
 
+int *backtracking_algorithm(graph *g){
+    
+    int *path = NULL;
+    int n_edges = g -> n_edges, n_nodes = g -> n_nodes, current_node = 0;
+
+    while(n_edges != 0){
+        int lower = 0;
+
+        for(int i = 0; i < n_nodes; i++){
+            for(int j = 0; j < n_nodes; j++){
+                //parando por aqui...
+            }
+        }
+
+
+    }
+
+
+
+
+    return path;
+}
+
+
+
 void teste(graph *g, int n){
 
     int orig, dest;

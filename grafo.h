@@ -27,4 +27,6 @@ void read_graph_info(graph *g, FILE *file);
 //um grafo euleriano.
 bool even_nodes(graph *g);
 
+int *backtracking_algorithm(graph *g);
+
 void teste(graph *g, int n);
