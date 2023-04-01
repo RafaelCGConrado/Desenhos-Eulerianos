@@ -146,3 +146,24 @@ void teste(graph *g, int n){
 
     }
 }
+
+graph *leitura_preenche_grafo(){
+
+    char nome_arquivo[10];
+    scanf("%s", nome_arquivo);
+    FILE *arq = fopen(nome_arquivo, "r");
+
+    int v, a;
+    fscanf(arq, "%d %d", &v, &a);
+
+    graph *g = graph_create(v, a);
+
+    int origem, destino;
+    for(int i = 0; i < a; i++){
+        fscanf(arq, "%d %d", &origem, &destino);
+        add_edge(g, origem, destino);
+    }
+
+    return g;
+
+}

@@ -30,3 +30,5 @@ bool even_nodes(graph *g);
 int *backtracking_algorithm(graph *g);
 
 void teste(graph *g, int n);
+
+graph *leitura_preenche_grafo();
