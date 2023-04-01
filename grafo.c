@@ -136,17 +136,6 @@ int *backtracking_algorithm(graph *g){
 
 
 
-void teste(graph *g, int n){
-
-    int orig, dest;
-    for(int i = 0; i < n; i++){
-        printf("Insira os vértices: \n");
-        scanf("%d %d", &orig, &dest);
-        add_edge(g, orig, dest);
-
-    }
-}
-
 graph *leitura_preenche_grafo(){
 
     char nome_arquivo[10];
@@ -163,6 +152,8 @@ graph *leitura_preenche_grafo(){
         fscanf(arq, "%d %d", &origem, &destino);
         add_edge(g, origem, destino);
     }
+
+    fclose(arq);
 
     return g;
 

@@ -18,17 +18,14 @@ void destroy_graph(graph *g);
 //principalmente para testes
 void print_graph(graph *g);
 
-//Será utilizado para ler o número de vértices, arestas
-//e para definir a matriz de adjacência
-void read_graph_info(graph *g, FILE *file);
-
 //Verifica se todos os vértices do grafo tem
 //grau par. Caso não seja, já sabemos que não é
 //um grafo euleriano.
 bool even_nodes(graph *g);
 
+//Encontra o caminho euleriano do grafo e retorna
+//o ponteiro para o vetor em questão
 int *backtracking_algorithm(graph *g);
 
-void teste(graph *g, int n);
-
+//Lê o nome do arquivo, abre o arquivo, cria e preenche o grafo
 graph *leitura_preenche_grafo();
