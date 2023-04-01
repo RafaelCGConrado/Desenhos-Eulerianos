@@ -120,8 +120,10 @@ int *backtracking_algorithm(graph *g){
         int lower = 0;
 
         for(int i = 0; i < n_nodes; i++){
-            for(int j = 0; j < n_nodes; j++){
-                //parando por aqui...
+            if(g -> edges[current_node][i] < lower){
+                g -> edges[current_node][i] = 0;
+                g -> edges[i][current_node] = 0;
+                
             }
         }
 
