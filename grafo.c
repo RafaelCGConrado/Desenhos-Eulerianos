@@ -111,29 +111,46 @@ bool even_nodes(graph *g){
 
 }
 
-int *backtracking_algorithm(graph *g){
+void find_path_algorithm(graph *g){
     
+    //O ponteiro de inteiro path será o vetor que conterá o caminho euleriano.
+    //n_edges, n_nodes representam respectivamente o numero de vértices e de arestas
+    //current node guardará a posição atual em nosso caminho, e count será
+    //utilizada para controlar o posicionamento no vetor path
     int *path = NULL;
     int n_edges = g -> n_edges, n_nodes = g -> n_nodes, current_node = 0;
-
+    int count = 0;
     while(n_edges != 0){
-        int lower = 0;
-
+        
+        path = realloc(path, (count + 1) * sizeof(int));
+        path[count] = current_node;
         for(int i = 0; i < n_nodes; i++){
-            if(g -> edges[current_node][i] < lower){
+            //Percorrendo a linha até achar o primeiro 1
+            //Ou seja, tentando achar a aresta que leva para
+            //o menor vértice
+            if(g -> edges[current_node][i] == 1){
                 g -> edges[current_node][i] = 0;
                 g -> edges[i][current_node] = 0;
-                
+                current_node = i;
+                break;
             }
         }
+        //Terminada a verificação em um determinado vértice,
+        //a variável current_node é modificada
+        count++;
+        n_edges--;
 
 
     }
 
+    //O caminho já está praticamente completo. Retornamos ao 0.
+    path[count] = 0;
 
-
-
-    return path;
+    for(int i = 0; i <= count; i++){
+        printf("%d ", path[i]);
+    }
+    printf("\n");
+    
 }
 
 

@@ -25,7 +25,7 @@ bool even_nodes(graph *g);
 
 //Encontra o caminho euleriano do grafo e retorna
 //o ponteiro para o vetor em questão
-int *backtracking_algorithm(graph *g);
+void find_path_algorithm(graph *g);
 
 //Lê o nome do arquivo, abre o arquivo, cria e preenche o grafo
 graph *leitura_preenche_grafo();
