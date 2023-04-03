@@ -111,6 +111,21 @@ bool even_nodes(graph *g){
 
 }
 
+bool lonely_node(graph *g, int index){
+    //Esta função conta a quantidade de arestas
+    //para determinar se um vértice irá ficar isolado
+    //na próxima escolha de aresta. Isso é importante
+    //para garantir que todos os vértices serão visitados
+    //durante o percurso.
+    int count = 0;
+    for(int j = 0; j < g -> n_nodes; j++){
+        if(g->edges[index][j] == 1) count++;
+    }
+    if(count > 1) return false;
+    return true;
+
+}
+
 void find_path_algorithm(graph *g){
     
     //O ponteiro de inteiro path será o vetor que conterá o caminho euleriano.
@@ -120,30 +135,42 @@ void find_path_algorithm(graph *g){
     int *path = NULL;
     int n_edges = g -> n_edges, n_nodes = g -> n_nodes, current_node = 0;
     int count = 0;
+    
     while(n_edges != 0){
-        
         path = realloc(path, (count + 1) * sizeof(int));
         path[count] = current_node;
         for(int i = 0; i < n_nodes; i++){
             //Percorrendo a linha até achar o primeiro 1
             //Ou seja, tentando achar a aresta que leva para
             //o menor vértice
-            if(g -> edges[current_node][i] == 1){
-                g -> edges[current_node][i] = 0;
-                g -> edges[i][current_node] = 0;
-                current_node = i;
-                break;
+
+            //A função lonely_node é utilizada aqui. Caso seja
+            //detectado que o vértice de destino não irá possuir 
+            //mais nenhuma aresta, ou seja, ficará isolado,
+            //a aresta em questão não é escolhida e passamos
+            //para a outra mais próxima. Importante para garantir
+            //que todos os vértices serão visitados ao longo de um
+            //caminho.
+            if(g -> edges[current_node][i] == 1 &&
+            lonely_node(g, i) == false){
+                    g -> edges[current_node][i] = 0;
+                    g -> edges[i][current_node] = 0;
+                    current_node = i;
+                    break;
             }
         }
         //Terminada a verificação em um determinado vértice,
-        //a variável current_node é modificada
+        //a variável current_node é modificada, count é incrementada 
+        //e n_edges decrementada para que a busca continue.
         count++;
         n_edges--;
 
 
     }
 
-    //O caminho já está praticamente completo. Retornamos ao 0.
+    //O caminho já está praticamente completo. Como todos os vértices
+    //já foram visitados pelo menos uma vez, podemos retornar ao 0
+    //e concluir o ciclo euleriano.
     path[count] = 0;
 
     for(int i = 0; i <= count; i++){

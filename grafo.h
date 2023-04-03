@@ -23,6 +23,11 @@ void print_graph(graph *g);
 //um grafo euleriano.
 bool even_nodes(graph *g);
 
+//Verifica se um determinado só possui mais uma aresta ligada a ele.
+//É fundamental no find_path_algorithm
+bool lonely_node(graph *g, int index);
+
+
 //Encontra o caminho euleriano do grafo e retorna
 //o ponteiro para o vetor em questão
 void find_path_algorithm(graph *g);
